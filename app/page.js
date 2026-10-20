@@ -1,69 +1,256 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import ThemeToggle from "./ThemeToggle";
+import { SiFigma } from "react-icons/si";
+import { FaGithub, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa6";
+
+// Simple stand-in icon for Canva
+function CanvaIcon({ size = 28 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <circle cx="16" cy="16" r="13" />
+      <path d="M21 12.5a6 6 0 1 0 0 7" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Edit these values to fill in your portfolio.
+const name = "Von Eiron";
+const role = "UI/UX Designer.";
+const intro =
+  "I design clean, thoughtful interfaces and plan them with wireframes before anything gets built.";
+const email = "voneiron.abion@sorsu.edu.ph";
+
+const about =
+  "I'm a designer who enjoys turning ideas into clean, thoughtful interfaces. I'm good at designing, and I also create wireframes to plan layouts and user flows before anything gets built.";
+
+// Set image to a file in /public, e.g. "/yale-redesign.png"
+const project = {
+  title: "Yale School of Art, redesign",
+  text: "A redesign of the Yale School of Art website, focused on clearer navigation and a cleaner layout. Designed in Figma.",
+  tags: ["Figma", "UI design", "Wireframing"],
+     image: "/ss1.png",
+  href: "#",
+};
+
+const tools = [
+  { name: "Figma", Icon: SiFigma },
+  { name: "Canva", Icon: CanvaIcon },
+  { name: "Other tool", Icon: null },
+];
+
+const canvaWorks = [
+  {
+    category: "Pubmats",
+    items: [
+      { title: "Back to School Pubmat", image: "/works/pm1.png" },
+      { title: "Independence Day Pubmat", image: "/works/pm2.png" },
+      { title: "Chinese New Year Pubmat", image: "/works/pm3.png" },
+      { title: "National Heroes Day Pubmat", image: "/works/pm4.png" },
+    ],
+  },
+  {
+    category: "Infographics",
+    items: [
+      { title: "Ngiting SorSUeño Infographics", image: "/works/ig1.png" },
+      { title: "Local Farmers Infographics", image: "/works/ig2.png" },
+    ],
+  },
+];
+
+const skills = [
+  "UI design",
+  "Wireframing",
+  "Visual design",
+  "Layout and typography",
+  "Color and style",
+  "Prototyping",
+];
+
+const activities = [
+  {
+    role: "Public Relations Officer",
+    org: "SorSU-BC CRCYC",
+    time: "A.Y 2024-2026",
+  },
+];
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/voneironabion", Icon: FaGithub },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/your-name", Icon: FaLinkedinIn },
+  { label: "Facebook", href: "https://www.facebook.com/voneiron.abion", Icon: FaFacebookF },
+  { label: "Instagram", href: "https://www.instagram.com/vrnnnbn/", Icon: FaInstagram },
+];
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.js</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <header>
+        <div className="wrap">
+          <a className="mark" href="#top">
+            <i></i>
+            {name}
+          </a>
+          <nav>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#tools">Tools</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <ThemeToggle />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      <main id="top">
+        <div className="wrap">
+          <div className="hero">
+            <div className="status">
+              <i></i>Open to opportunities
+            </div>
+            <h1>
+              {name}
+              <span>{role}</span>
+            </h1>
+            <p>{intro}</p>
+          </div>
+        </div>
+
+        <div className="wrap">
+          <section id="about">
+            <div className="row">
+              <h2>About</h2>
+              <p className="about">{about}</p>
+            </div>
+          </section>
+
+          <section id="work">
+            <div className="row">
+              <h2>Sample Works</h2>
+              <div>
+                <a className="feature" href={project.href}>
+                  <div className="ph feature-img">
+                    {project.image ? (
+                      <img src={project.image} alt={project.title} />
+                    ) : (
+                      "Add your Figma screenshots here"
+                    )}
+                  </div>
+                  <div className="feature-meta">
+                    <div>
+                      <h3>{project.title}</h3>
+                      <p>{project.text}</p>
+                    </div>
+                    <div className="tags">
+                      {project.tags.map((t) => (
+                        <span key={t}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+                <div className="ph soon">More projects coming soon</div>
+              </div>
+            </div>
+          </section>
+
+<section id="graphics">
+  <div className="row">
+    <h2>Sample Works</h2>
+    <div>
+      {canvaWorks.map((group) => (
+        <div className="group" key={group.category}>
+          <h3 className="group-title">{group.category}</h3>
+          <div className={group.category === "Pubmats" ? "gallery pubmats" : "gallery"}>
+            {group.items.map((item, i) => (
+              <figure className="work" key={i}>
+                <div className="ph work-img">
+                  {item.image ? (
+                    <img src={item.image} alt={item.title} />
+                  ) : (
+                    "Add image"
+                  )}
+                </div>
+                <figcaption>{item.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+          <section id="tools">
+            <div className="row">
+              <h2>Tools</h2>
+              <div className="tools">
+                {tools.map(({ name, Icon }) => (
+                  <div className={Icon ? "tool" : "tool empty"} key={name}>
+                    {Icon && <Icon size={28} />}
+                    <span>{name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="skills">
+            <div className="row">
+              <h2>Skills</h2>
+              <div className="chips">
+                {skills.map((s) => (
+                  <span key={s}>{s}</span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="activities">
+            <div className="row">
+              <h2>Experiences</h2>
+              <div className="list">
+                {activities.map((a) => (
+                  <div className="item" key={a.role + a.org}>
+                    <div>
+                      <h3>{a.role}</h3>
+                      <p>{a.org}</p>
+                    </div>
+                    <span>{a.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="contact" className="contact">
+            <div className="row">
+              <h2>Contact</h2>
+              <div>
+                <a className="email" href={`mailto:${email}`}>
+                  {email}
+                </a>
+                <div className="socials">
+                  {socials.map(({ label, href, Icon }) => (
+                    <a href={href} key={label} aria-label={label}>
+                      <Icon size={18} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
-    </div>
+
+      <footer>
+        <div className="wrap">
+          © {new Date().getFullYear()} {name}
+        </div>
+      </footer>
+    </>
   );
 }
