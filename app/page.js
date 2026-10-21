@@ -1,6 +1,6 @@
 import ThemeToggle from "./ThemeToggle";
 import { SiFigma } from "react-icons/si";
-import { FaGithub, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa6";
+import { FaGithub, FaFacebookF, FaInstagram } from "react-icons/fa6";
 
 // Simple stand-in icon for Canva
 function CanvaIcon({ size = 28 }) {
@@ -20,46 +20,77 @@ function CanvaIcon({ size = 28 }) {
   );
 }
 
+// Simple "Ps" badge for Photoshop
+function PhotoshopIcon({ size = 28 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
+      <rect x="3" y="3" width="26" height="26" rx="6" />
+      <text
+        x="16"
+        y="21.5"
+        textAnchor="middle"
+        fontSize="14"
+        fontWeight="700"
+        fill="currentColor"
+        stroke="none"
+        fontFamily="system-ui, sans-serif"
+      >
+        Ps
+      </text>
+    </svg>
+  );
+}
+
 // Edit these values to fill in your portfolio.
 const name = "Von Eiron";
 const role = "UI/UX Designer.";
 const intro =
-  "I design clean, thoughtful interfaces and plan them with wireframes before anything gets built.";
+  "Interfaces, wireframes, and graphics that make information easy to understand.";
 const email = "voneiron.abion@sorsu.edu.ph";
 
 const about =
-  "I'm a designer who enjoys turning ideas into clean, thoughtful interfaces. I'm good at designing, and I also create wireframes to plan layouts and user flows before anything gets built.";
+  "I'm a UI/UX design student who plans every screen with wireframes before polishing it in Figma. Outside of interfaces, I design pubmats and infographics as a PRO, turning information into visuals people want to read.";
 
-// Set image to a file in /public, e.g. "/yale-redesign.png"
+// Set image to a file in /public, e.g. "/ss1.png"
 const project = {
   title: "Yale School of Art, redesign",
   text: "A redesign of the Yale School of Art website, focused on clearer navigation and a cleaner layout. Designed in Figma.",
   tags: ["Figma", "UI design", "Wireframing"],
-     image: "/ss1.png",
+  image: "/ss1.png",
   href: "#",
 };
 
 const tools = [
   { name: "Figma", Icon: SiFigma },
   { name: "Canva", Icon: CanvaIcon },
+  { name: "Photoshop", Icon: PhotoshopIcon },
   { name: "Other tool", Icon: null },
 ];
 
+// Images live in /public/works
 const canvaWorks = [
   {
     category: "Pubmats",
     items: [
-      { title: "Back to School Pubmat", image: "/works/pm1.png" },
-      { title: "Independence Day Pubmat", image: "/works/pm2.png" },
-      { title: "Chinese New Year Pubmat", image: "/works/pm3.png" },
-      { title: "National Heroes Day Pubmat", image: "/works/pm4.png" },
+      { title: "Back to School", image: "/works/pm1.png" },
+      { title: "Independence Day", image: "/works/pm2.png" },
+      { title: "Chinese New Year", image: "/works/pm3.png" },
+      { title: "National Heroes Day", image: "/works/pm4.png" },
     ],
   },
   {
     category: "Infographics",
     items: [
-      { title: "Ngiting SorSUeño Infographics", image: "/works/ig1.png" },
-      { title: "Local Farmers Infographics", image: "/works/ig2.png" },
+      { title: "Ngiting SorSUeño", image: "/works/ig1.png" },
+      { title: "Local Farmers", image: "/works/ig2.png" },
     ],
   },
 ];
@@ -83,7 +114,6 @@ const activities = [
 
 const socials = [
   { label: "GitHub", href: "https://github.com/voneironabion", Icon: FaGithub },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/your-name", Icon: FaLinkedinIn },
   { label: "Facebook", href: "https://www.facebook.com/voneiron.abion", Icon: FaFacebookF },
   { label: "Instagram", href: "https://www.instagram.com/vrnnnbn/", Icon: FaInstagram },
 ];
@@ -93,13 +123,13 @@ export default function Home() {
     <>
       <header>
         <div className="wrap">
-          <a className="mark" href="#top">
+          <a className="mark" href="#top" aria-label="Back to top">
             <i></i>
-            {name}
           </a>
           <nav>
             <a href="#about">About</a>
             <a href="#work">Work</a>
+            <a href="#graphics">Graphics</a>
             <a href="#tools">Tools</a>
             <a href="#contact">Contact</a>
           </nav>
@@ -111,7 +141,7 @@ export default function Home() {
         <div className="wrap">
           <div className="hero">
             <div className="status">
-              <i></i>Open to opportunities
+              <i></i>Designing clarity, one screen at a time.
             </div>
             <h1>
               {name}
@@ -131,7 +161,7 @@ export default function Home() {
 
           <section id="work">
             <div className="row">
-              <h2>Sample Works</h2>
+              <h2>UI/UX Design</h2>
               <div>
                 <a className="feature" href={project.href}>
                   <div className="ph feature-img">
@@ -158,32 +188,37 @@ export default function Home() {
             </div>
           </section>
 
-<section id="graphics">
-  <div className="row">
-    <h2>Sample Works</h2>
-    <div>
-      {canvaWorks.map((group) => (
-        <div className="group" key={group.category}>
-          <h3 className="group-title">{group.category}</h3>
-          <div className={group.category === "Pubmats" ? "gallery pubmats" : "gallery"}>
-            {group.items.map((item, i) => (
-              <figure className="work" key={i}>
-                <div className="ph work-img">
-                  {item.image ? (
-                    <img src={item.image} alt={item.title} />
-                  ) : (
-                    "Add image"
-                  )}
-                </div>
-                <figcaption>{item.title}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+          <section id="graphics">
+            <div className="row">
+              <h2>Graphic Design</h2>
+              <div>
+                {canvaWorks.map((group) => (
+                  <div className="group" key={group.category}>
+                    <h3 className="group-title">{group.category}</h3>
+                    <div
+                      className={
+                        group.category === "Pubmats" ? "gallery pubmats" : "gallery"
+                      }
+                    >
+                      {group.items.map((item, i) => (
+                        <figure className="work" key={i}>
+                          <div className="ph work-img">
+                            {item.image ? (
+                              <img src={item.image} alt={item.title} />
+                            ) : (
+                              "Add image"
+                            )}
+                          </div>
+                          <figcaption>{item.title}</figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           <section id="tools">
             <div className="row">
               <h2>Tools</h2>
